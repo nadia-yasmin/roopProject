@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+	<title>roop</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>  
+	
+</head>
+<body>
+	<div class="container-fluid">
+		<div>
+			<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+				<a class="navbar-brand" th:href="@{/}">
+					<img th:src="@{/images/image.png}" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="topNavbar">
+					<ul class="navbar-nav">
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/users}">Users </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/categories}"> Categories </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/brands}"> Brands </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/products}"> Products </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/customers}"> Customers </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/shipping}"> Shipping </a>
+						 </li> 
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/orders}"> Orders </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/report}"> Sales Report </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/articles}"> Articles </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/menus}"> Menus </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/settings}"> Settings </a>
+						 </li>
+					</ul>
+				</div>
+			</nav>
+	    </div>  
+	    <div>
+		<h2>Manage Products</h2>
+		<a th:href="@{/products/new}"> Create New product </a>
+		</div> 
+		<div th:if="${message !=null}" class="alert alert-success text-center">
+		[[${message}]]
+		</div>
+		<div>
+		<table class= "table table-bordered table-striped table-hover table-responsive-xl">
+		<thead class="thead-dark"> 
+		<tr>
+		<th> ID </th>
+		<th> Main Image</th>
+		<th> Product Name </th>
+		<th> Brand </th>
+		<th> Category </th>
+		<th> Enabled </th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="product : ${listProducts}">
+		<!--  <td></td> -->
+		<td>[[${product.id}]]</td>
+		<td> <img th:src="@{'images/'+ ${product.photos}}" style="width:100px" class="img-fluid"/> </td>
+		<td>[[${product.name}]]</td>
+		<td>[[${product.brand.name}]]</td>
+		<td>[[${product.category.name}]]</td>
+		<td>[[${product.enabled}]]</td>
+		<td><a th:if="${product.enabled==true}" class="fa-solid fa-check-circle fa-2x icon-green" 
+		th:href="@{'/products/' + ${product.id} +'/enabled/false'}"
+		title= "Disable this product" ></a>
+		<a th:if="${product.enabled==false}" class="fa-solid fa-circle fa-2x icon-dark" 
+		th:href="@{'/products/' + ${product.id} +'/enabled/true'}"
+		title= "Enable this product" ></a></td>
+	
+		
+		<td><a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/products/edit/'+ ${product.id}}" title="Edit this product"></a>
+		&nbsp; 
+		<a class="fa-solid fa-trash fa-2x icon-dark link-delete" th:href="@{'/products/delete/' + ${product.id}}"
+		th:userId="${product.id}"
+		 title="Delete this Product"></a>
+</td>
+		</tr> 
+		</tbody>
+		</table>
+	
+</div>
+<div class= "text-center">
+		<p>roop Control Panel - Copyright &copy; roop<p>
+		</div>
+
+</body>
+</html>
+       

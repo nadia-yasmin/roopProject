@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+	<title>roop</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>  
+</head>
+<body>
+<div class="container-fluid">
+		<div>
+			<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+				<a class="navbar-brand" th:href="@{/}">
+					<img th:src="@{/images/image.png}" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="topNavbar">
+					<ul class="navbar-nav">
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/careers}">Careers </a>
+						 </li>
+						  <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/payments}"> Payments </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/shippingdelivery}"> Shipping &amp; Delivery </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/login}"> Login </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/register}"> Register </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/product}"> Product </a>
+						 </li> 
+						 
+					</ul>
+				</div>
+			</nav>
+	    </div>   
+	    </div>
+
+<div>
+<h1>Products in category</h1>
+</div> 
+<div th:if="${listCategoryParents != null  && !listCategoryParents.empty}">
+<div class= "row">
+<div class="col">
+<nav>
+<ol class="breadcrumb">
+<li class="breadcrumb-item">
+<a th:href="@{/}">Home</a>
+</li>
+<th:block th:each="parent: ${listCategoryParents}">
+<li class="breadcrumb-item">
+<a th:href="@{'/c/' + ${parent.alias}}">[[${parent.name}]]</a>
+</li>
+</th:block>
+<li class="breadcrumb-item" th:if="${product!=null}">
+<span>[[${product.name}]]</span>
+</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+<div class="row">
+
+<div class="col-sm">
+<div>
+  <a th:href="@{'/p/'+${product.alias}}">
+			<img th:src="@{'images/'+ ${product.photos}}" style="width:100px" class="img-fluid"/>
+			</a>
+<!--
+<img th:src="@{'images/'+ ${product.photos}}" class="img-fluid"/> 
+  -->
+</div>
+</div>
+<div class="col-sm">
+<div>
+<h2>[[${product.name}]]</h2>
+</div>
+<div>
+<span> Brand:[[${product.brand.name}]]</span>
+</div>
+<div>
+<span> Price:[[${product.price}]]</span>
+</div>
+<div>
+&nbsp;
+</div>
+<div th:utext="${product.shortDescription}">
+
+</div>
+</div>
+<div class="col-sm-2">
+<div>
+<b>In Stock</b>
+</div>
+<div>
+<!-- <input type="button" value= "Add to cart" class="btn btn-primary" />  -->
+ <a class="nav-link" th:href="@{products/addtocart}">Add to cart </a>
+</div>
+</div>
+</div>
+
+			  <div class="container-fluid">
+		<div>
+			<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+				
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bottomNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button> 
+		<div class="collapse navbar-collapse" id="bottomNavbar">
+					<ul class="navbar-nav">
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/careers}">About us </a>
+						 </li>
+						  <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/payments}"> Privacy Notice </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/shippingdelivery}"> Returns &amp; Refunds </a>
+						 </li>
+						 
+					</ul>
+				</div>  
+		<div>
+		<p>roop - Copyright &copy; roop ltd.<p>
+		</div>
+	    </div>  

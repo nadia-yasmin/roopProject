@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+	<title>roop</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>  
+</head>
+<body>
+<div class="container-fluid">
+		<div>
+			<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+				<a class="navbar-brand" th:href="@{/}">
+					<img th:src="@{/images/image.png}" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="topNavbar">
+					<ul class="navbar-nav">
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/careers}">Careers </a>
+						 </li>
+						  <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/payments}"> Payments </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/shippingdelivery}"> Shipping &amp; Delivery </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/login}"> Login </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/register}"> Register </a>
+						 </li>
+						 <li class="nav-item">
+						 	<a class="nav-link" th:href="@{/product}"> Product </a>
+						 </li> 
+						 
+					</ul>
+				</div>
+			</nav>
+	    </div> 
+	    </div>  
+<div>
+<h2>Order Confirmed</h2>
+</div>
+<p>Your order has been saved successfully</p>		
+</body>
+</html>
